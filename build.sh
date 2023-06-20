@@ -4,6 +4,11 @@ PWD=`pwd`
 TEAMGRAMAPP=${PWD}"/app"
 INSTALL=${PWD}"/teamgramd"
 
+go env -w CGO_ENABLED=0
+go env -w GOOS=linux
+go env -w GOARCH=amd64
+go env -w GOPROXY=https://goproxy.cn,direct
+
 echo "build idgen ..."
 cd ${TEAMGRAMAPP}/service/idgen/cmd/idgen
 go build -o ${INSTALL}/bin/idgen
